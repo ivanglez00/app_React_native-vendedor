@@ -1,0 +1,37 @@
+<?php
+
+$nombre = $_GET['nombre'];
+$precio = $_GET['precio'];
+$descripcion = $_GET['descripcion'];
+$imagen = $_GET['imagen'];
+$id = $_GET['id'];
+
+
+//credenciales
+$server = "localhost";
+$user = "id19804740_ivanglez00";
+$password = "Qwerty124501.";
+$db = "id19804740_ecomerce";
+
+//conexion al server base de datos
+$conn = mysqli_connect($server,$user,$password,$db);
+
+if(!$conn){
+    echo"error de cnexion" . mysqli_connect_error();
+}
+
+//querry para los cambios
+$sql = "UPDATE productos SET nombrePro='$nombre',precioPro='$precio',descripcionPro='$descripcion',foto='$imagen' WHERE idPro='$id' ";
+
+//verificacion para ver si funciona
+if(mysqli_query($conn,$sql)){
+    echo "1";
+}else{
+    echo "0";
+}
+
+mysqli_close($conn);
+
+
+
+?>

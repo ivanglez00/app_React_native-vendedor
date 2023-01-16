@@ -1,0 +1,34 @@
+<?php
+
+$nombre = $_GET['nombre'];
+$precio = $_GET['precio'];
+$descripcion = $_GET['descripcion'];
+$foto = $_GET['foto'];
+
+//credenciales
+$server = "localhost";
+$user = "id19804740_ivanglez00";
+$password = "Qwerty124501.";
+$db = "id19804740_ecomerce";
+
+//conexion al server base de datos
+$conn = mysqli_connect($server,$user,$password,$db);
+
+if(!$conn){
+    echo"error de cnexion" . mysqli_connect_error();
+}
+
+
+//ejecutar la insercion
+$sql= "INSERT INTO productos( nombrePro,precioPro,descripcionPro,foto) VALUES ($nombre,$precio,$descripcion,$foto)"  ;
+
+if(mysqli_query($conn,$sql)){
+    echo "1";
+}else{
+    echo "0";
+}
+
+mysqli_close($conn);
+
+
+?>

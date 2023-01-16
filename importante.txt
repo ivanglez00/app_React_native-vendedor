@@ -1,0 +1,5 @@
+el carrito es lo mas importante del programa esta hecho a base de varias tablas 
+unas son de paso y se consultan de diferente manera que tambien las consultas
+son otra parte clave para hacer que el cliente vea el carrito,
+ una vez entendiendo eso vienso la base de datos con  las tablas es mas facil para entenderlo
+ 

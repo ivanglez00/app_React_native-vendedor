@@ -1,0 +1,43 @@
+<?php
+
+$nui = $_GET['nui'];
+
+
+//credenciales
+$server = "localhost";
+$user = "id19804740_ivanglez00";
+$password = "Qwerty124501.";
+$db = "id19804740_ecomerce";
+
+//conexion al server base de datos
+$conn = mysqli_connect($server,$user,$password,$db);
+
+if(!$conn){
+    echo"error de cnexion" . mysqli_connect_error();
+}
+
+
+//ejecutar la insercion
+$sql= "select  carrito.idCarrito, clientes.idCli, clientes.nombreCli, clientes.direccionCli, productos.idPro, productos.nombrePro , carrito.cantidad, pedido.status
+from clientes,carrito,productos,pedido
+WHERE carrito.clienteId = clientes.idCli and carrito.productoId = productos.idPro and carrito.idCarrito=pedido.carritoId and pedido.status = 'pendiente' and carrito.idCarrito = '$nui'
+order BY idCarrito ;";
+
+
+$result = mysqli_query($conn, $sql);
+$data = array();
+if(mysqli_num_rows($result) > 0){
+   while($row = mysqli_fetch_assoc($result)){
+    
+
+$data[] = $row;
+   } 
+   print json_encode($data);
+}else{
+    echo"0";
+}
+
+mysqli_close($conn);
+
+
+?>
